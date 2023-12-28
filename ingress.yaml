@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wp
+  namespace: lab01
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: react-form
+                port:
+                  number: 80
+    - http:
+        paths:
+          - path: /publish
+            pathType: Prefix
+            backend:
+              service:
+                name: react-form
+                port:
+                  number: 80
